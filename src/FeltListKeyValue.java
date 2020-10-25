@@ -1,7 +1,6 @@
 
-
-    public class FeltListKeyValue {
-    private int key;
+public class FeltListKeyValue {
+    private  int key;
     private int value;
     private boolean giverEkstraTur;
 
@@ -26,4 +25,7 @@
     public boolean giverEkstraTur() {
         return giverEkstraTur;
     }
+
+
+
 }
