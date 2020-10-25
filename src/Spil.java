@@ -30,23 +30,23 @@ public class Spil {
         //player1 starts the game
         currentPlayer = player1;
 
-        startGame();
+        startGame(print);
     }
 
-    private void startGame() {
+    private void startGame(Print print) {
         int vinderPengeBeholdningPoints = 3000;
         boolean gameIsRunning = true;
         while (gameIsRunning) {
 
             String spillerNavn = currentPlayer.getNavn();
-            System.out.println(spillerNavn + "'s turn. Throw dice (Enter)");
+            System.out.println(spillerNavn + print.printTurn());
             String waitForDiceThrow = scanner.nextLine();
 
             int feltKey = terning.kast();
 
             FeltListKeyValue keyValue = feltList.getVærdi(feltKey);
             int value = keyValue.getValue();
-            System.out.println("Key: " + feltKey + ", Værdi: " + value);
+            System.out.println(print.getLWord() + feltKey + print.getVWord() + value);
 
             Konto konto = currentPlayer.getKonto();
             boolean gennemført = konto.updatePengeBeholdning(value);
@@ -54,7 +54,7 @@ public class Spil {
                 System.out.println("Konto'en blev ikke opdateret");
             }
 
-            System.out.println(spillerNavn + " pengebehldning: " + konto.getPengeBeholdning());
+            System.out.println(spillerNavn + print.getPWord() + konto.getPengeBeholdning());
 
             if (konto.getPengeBeholdning() >= vinderPengeBeholdningPoints) {
                 System.out.println(spillerNavn + " has won the game! :)");

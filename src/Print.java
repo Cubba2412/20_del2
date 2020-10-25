@@ -8,7 +8,7 @@ public class Print {
     private String Turn;
     private String Language;
     private String[] PlayerNamePrompt;
-
+    private String[] FVPWord;
     public Print() {
     }
 
@@ -36,6 +36,8 @@ public class Print {
             Turn = loadSingleLine(filepath);
             filepath = ".\\PrintStatements\\EnglishPlayerNamePrompt.txt";
             PlayerNamePrompt = loadMultiLine(filepath,2);
+            filepath = ".\\PrintStatements\\EnglishFVPWord.txt";
+            FVPWord = loadMultiLine(filepath,3);
         }
         else if (Language=="Danish") {
 
@@ -57,6 +59,15 @@ public class Print {
 
     public void PrintField(int FieldNr) {
         System.out.println(Options[FieldNr]);
+    }
+    public String getLWord() {
+        return FVPWord[0];
+    }
+    public String getVWord() {
+        return FVPWord[1];
+    }
+    public String getPWord() {
+        return FVPWord[2];
     }
 
     public String printTurn() {
