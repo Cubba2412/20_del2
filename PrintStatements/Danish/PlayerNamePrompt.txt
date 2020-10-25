@@ -1,0 +1,2 @@
+Indtast player 1's navn
+Indtast player 2's navn

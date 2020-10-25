@@ -37,7 +37,7 @@ public class Print {
             Path = ".\\PrintStatements\\English\\";
         }
         else if (Language.equals("Danish")) {
-            String Path = ".\\PrintStatements\\Danish\\";
+            Path = ".\\PrintStatements\\Danish\\";
         }
         String filepath = Path + "Options.txt";
         Options = loadMultiLine(filepath,11);

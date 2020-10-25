@@ -1,2 +1,2 @@
-Enter player1 name
-Enter player2 name
+Enter player 1's name
+Enter player 2's name
