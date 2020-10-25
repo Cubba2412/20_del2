@@ -4,8 +4,8 @@ import java.io.FileNotFoundException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PrintOptionsTest {
-    PrintOptions myPrint = new PrintOptions();
+class PrintTest {
+    Print myPrint = new Print();
     @Test
     void loadOptions() throws FileNotFoundException {
         String[] Options = myPrint.loadOptions(".\\PrintStatements\\EnglishOptions.txt");
