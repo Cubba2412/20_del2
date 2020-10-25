@@ -51,4 +51,27 @@ public class Spil {
 
             System.out.println(spillerNavn + " pengebehldning: " + konto.getPengeBeholdning());
 
+            if (konto.getPengeBeholdning() >= vinderPengeBeholdningPoints) {
+                System.out.println(spillerNavn + " has won the game! :)");
+                System.out.println("GAME OVER");
+                gameIsRunning = false;
+                return; //exit the method
+            }
+            if (keyValue.giverEkstraTur()) {
+                System.out.println("Du har en ekstra tur!");
+            }
+            else{
+                if (currentPlayer == player1) {
+                    currentPlayer = player2;
+                } else {
+                    currentPlayer = player1;
+                }
+            }
+            System.out.println("--------------------------------");
+            System.out.println();
+
+        }
+    }
+}
+
 }
