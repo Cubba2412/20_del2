@@ -34,7 +34,7 @@ public class Spil {
     }
 
     private void startGame(Print print) {
-        int vinderPengeBeholdningPoints = 3000;
+        int winningPoints = 3000;
         boolean gameIsRunning = true;
         while (gameIsRunning) {
 
@@ -46,7 +46,7 @@ public class Spil {
 
             FeltListKeyValue keyValue = feltList.getVærdi(feltKey);
             int value = keyValue.getValue();
-            System.out.println(print.getLWord() + feltKey + print.getVWord() + value);
+            print.PrintField(feltKey);
 
             Konto konto = currentPlayer.getKonto();
             boolean Success = konto.updatePengeBeholdning(value);
@@ -54,9 +54,9 @@ public class Spil {
                 print.AccountError();
             }
 
-            System.out.println(PlayerName + print.getPWord() + konto.getPengeBeholdning());
+            System.out.println(PlayerName + print.getAccount() + konto.getPengeBeholdning());
 
-            if (konto.getPengeBeholdning() >= vinderPengeBeholdningPoints) {
+            if (konto.getPengeBeholdning() >= winningPoints) {
                 print.endGame(PlayerName);
                 gameIsRunning = false;
                 return; //exit the method

@@ -8,18 +8,17 @@ public class Print {
     private String Turn;
     private String Language;
     private String[] PlayerNamePrompt;
-    private String[] FVPWord;
     private String ExtraTurn;
     private String[] endGame;
     private String AccountError;
     private String Path;
+    private String Account;
     public Print() {
     }
 
     public void AskForLanguage(Scanner scanner) throws FileNotFoundException {
         System.out.println("Please choose a language \n");
         System.out.println("1. English \n");
-        String s;
         System.out.println("2. Danish \n");
         int choice = scanner.nextInt();
         if(choice==1) {
@@ -45,14 +44,15 @@ public class Print {
         Turn = loadSingleLine(filepath);
         filepath = Path + "PlayerNamePrompt.txt";
         PlayerNamePrompt = loadMultiLine(filepath,2);
-        filepath = Path + "FVPWord.txt";
-        FVPWord = loadMultiLine(filepath,3);
         filepath = Path + "ExtraTurn.txt";
         ExtraTurn = loadSingleLine(filepath);
         filepath = Path + "EndGame.txt";
         endGame = loadMultiLine(filepath,2);
         filepath = Path + "AccountError.txt";
         AccountError = loadSingleLine(filepath);
+        filepath = Path + "Account.txt";
+        Account = loadSingleLine(filepath);
+
 
     }
 
@@ -67,17 +67,13 @@ public class Print {
     }
 
     public void PrintField(int FieldNr) {
-        System.out.println(Options[FieldNr]);
+        System.out.println(Options[FieldNr-2]);
     }
-    public String getLWord() {
-        return FVPWord[0];
+
+    public String getAccount() {
+        return Account;
     }
-    public String getVWord() {
-        return FVPWord[1];
-    }
-    public String getPWord() {
-        return FVPWord[2];
-    }
+
     public void ExtraTurn() {
         System.out.println(ExtraTurn);
     }
