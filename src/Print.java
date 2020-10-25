@@ -9,6 +9,7 @@ public class Print {
     private String Language;
     private String[] PlayerNamePrompt;
     private String[] FVPWord;
+    private String ExtraTurn;
     public Print() {
     }
 
@@ -38,6 +39,8 @@ public class Print {
             PlayerNamePrompt = loadMultiLine(filepath,2);
             filepath = ".\\PrintStatements\\EnglishFVPWord.txt";
             FVPWord = loadMultiLine(filepath,3);
+            filepath = ".\\PrintStatements\\EnglishExtraTurn.txt";
+            ExtraTurn = loadSingleLine(filepath);
         }
         else if (Language=="Danish") {
 
@@ -68,6 +71,13 @@ public class Print {
     }
     public String getPWord() {
         return FVPWord[2];
+    }
+    public void ExtraTurn() {
+        System.out.println(ExtraTurn);
+    }
+    public void newRound() {
+        System.out.println("--------------------------------");
+        System.out.println();
     }
 
     public String printTurn() {

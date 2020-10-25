@@ -63,7 +63,7 @@ public class Spil {
                 return; //exit the method
             }
             if (keyValue.giverEkstraTur()) {
-                System.out.println("Du har en ekstra tur!");
+                print.ExtraTurn();
             }
             else{
                 if (currentPlayer == player1) {
@@ -72,9 +72,7 @@ public class Spil {
                     currentPlayer = player1;
                 }
             }
-            System.out.println("--------------------------------");
-            System.out.println();
-
+            print.newRound();
         }
     }
 }
