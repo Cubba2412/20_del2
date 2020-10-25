@@ -10,6 +10,8 @@ public class Print {
     private String[] PlayerNamePrompt;
     private String[] FVPWord;
     private String ExtraTurn;
+    private String[] endGame;
+    private String AccountError;
     public Print() {
     }
 
@@ -30,7 +32,7 @@ public class Print {
     }
 
     public void setPrints() throws FileNotFoundException {
-        if (Language=="English") {
+        if (Language.equals("English")) {
             String filepath = ".\\PrintStatements\\EnglishOptions.txt";
             Options = loadMultiLine(filepath,11);
             filepath = ".\\PrintStatements\\EnglishTurn.txt";
@@ -41,8 +43,12 @@ public class Print {
             FVPWord = loadMultiLine(filepath,3);
             filepath = ".\\PrintStatements\\EnglishExtraTurn.txt";
             ExtraTurn = loadSingleLine(filepath);
+            filepath = ".\\PrintStatements\\EnglishEndGame.txt";
+            endGame = loadMultiLine(filepath,2);
+            filepath = ".\\PrintStatements\\EnglishAccountError.txt";
+            AccountError = loadSingleLine(filepath);
         }
-        else if (Language=="Danish") {
+        else if (Language.equals("Danish")) {
 
         }
 
@@ -53,8 +59,7 @@ public class Print {
         Scanner s = new Scanner(System.in);
         System.out.println(PlayerNamePrompt[i]);
         System.out.println();
-        String playerName = s.nextLine();
-        return playerName;
+        return s.nextLine();
     }
     public String getLanguage() {
         return Language;
@@ -75,19 +80,27 @@ public class Print {
     public void ExtraTurn() {
         System.out.println(ExtraTurn);
     }
+    public void AccountError() {
+        System.out.println(AccountError);
+    }
     public void newRound() {
         System.out.println("--------------------------------");
         System.out.println();
+    }
+    public void endGame(String playerName) {
+        newRound();
+        System.out.println(playerName + endGame[0]);
+        System.out.println(endGame[1]);
     }
 
     public String printTurn() {
         return Turn;
     }
 
-    static String[] loadMultiLine(String pathToFile, int length) throws FileNotFoundException {
+    static String[] loadMultiLine(String pathToFile, int lines) throws FileNotFoundException {
         Scanner s = new Scanner(new File(pathToFile));
-        String[] st = new String[length];
-        for(int i = 0;i<st.length;i++){
+        String[] st = new String[lines];
+        for(int i = 0;i<lines;i++){
             st[i] = s.nextLine();
         }
         s.close();
@@ -96,7 +109,7 @@ public class Print {
 
     static String loadSingleLine(String pathToFile) throws FileNotFoundException {
         Scanner s = new Scanner(new File(pathToFile));
-        String st = new String(s.nextLine());
+        String st = s.nextLine();
         s.close();
         return st;
     }

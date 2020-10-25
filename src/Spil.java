@@ -38,8 +38,8 @@ public class Spil {
         boolean gameIsRunning = true;
         while (gameIsRunning) {
 
-            String spillerNavn = currentPlayer.getNavn();
-            System.out.println(spillerNavn + print.printTurn());
+            String PlayerName = currentPlayer.getNavn();
+            System.out.println(PlayerName + print.printTurn());
             String waitForDiceThrow = scanner.nextLine();
 
             int feltKey = terning.kast();
@@ -49,16 +49,15 @@ public class Spil {
             System.out.println(print.getLWord() + feltKey + print.getVWord() + value);
 
             Konto konto = currentPlayer.getKonto();
-            boolean gennemført = konto.updatePengeBeholdning(value);
-            if (!gennemført) {
-                System.out.println("Konto'en blev ikke opdateret");
+            boolean Success = konto.updatePengeBeholdning(value);
+            if (!Success) {
+                print.AccountError();
             }
 
-            System.out.println(spillerNavn + print.getPWord() + konto.getPengeBeholdning());
+            System.out.println(PlayerName + print.getPWord() + konto.getPengeBeholdning());
 
             if (konto.getPengeBeholdning() >= vinderPengeBeholdningPoints) {
-                System.out.println(spillerNavn + " has won the game! :)");
-                System.out.println("GAME OVER");
+                print.endGame(PlayerName);
                 gameIsRunning = false;
                 return; //exit the method
             }
