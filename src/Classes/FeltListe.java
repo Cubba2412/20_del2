@@ -1,3 +1,5 @@
+package Classes;
+
 public class FeltListe {
 
     private FeltListKeyValue tower = new FeltListKeyValue(2, 250);
@@ -28,7 +30,7 @@ public class FeltListe {
         feltListValues[10] = goldmine;
     }
 
-    public FeltListKeyValue getVærdi(int feltKey) {
+    public FeltListKeyValue getValue(int feltKey) {
         for (int i = 0; i < feltListValues.length; i++) {
             FeltListKeyValue keyValue = feltListValues[i];
             if (keyValue.getKey() == feltKey) {

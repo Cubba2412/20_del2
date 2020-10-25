@@ -1,3 +1,5 @@
+package Classes;
+
 import java.io.FileNotFoundException;
 import java.util.Random;
 import java.util.Scanner;
@@ -44,7 +46,7 @@ public class Spil {
             if (waitForDiceThrow.equals("")) {
                 int feltKey = terning.kast();
 
-                FeltListKeyValue keyValue = feltList.getVærdi(feltKey);
+                FeltListKeyValue keyValue = feltList.getValue(feltKey);
                 int value = keyValue.getValue();
                 print.PrintField(feltKey);
 

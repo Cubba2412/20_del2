@@ -1,3 +1,5 @@
+package Classes;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -61,9 +63,6 @@ public class Print {
         System.out.println();
         return s.nextLine();
     }
-    public String getLanguage() {
-        return Language;
-    }
 
     public void PrintField(int FieldNr) {
         System.out.println(Options[FieldNr-2]);
@@ -93,7 +92,8 @@ public class Print {
         return Turn;
     }
 
-    static String[] loadMultiLine(String pathToFile, int lines) throws FileNotFoundException {
+    //Public to be used for unit testing
+    public String[] loadMultiLine(String pathToFile, int lines) throws FileNotFoundException {
         Scanner s = new Scanner(new File(pathToFile));
         String[] st = new String[lines];
         for(int i = 0;i<lines;i++){

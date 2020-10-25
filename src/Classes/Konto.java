@@ -1,3 +1,5 @@
+package Classes;
+
 public class Konto {
     private int pengeBeholdning;
 
@@ -9,8 +11,8 @@ public class Konto {
         return pengeBeholdning;
     }
 
-    public boolean updatePengeBeholdning(int feltVærdi) {
-        int nyPengeBeholdning = pengeBeholdning + feltVærdi;
+    public boolean updatePengeBeholdning(int fieldValue) {
+        int nyPengeBeholdning = pengeBeholdning + fieldValue;
         if(nyPengeBeholdning < 0){
             return false;
         }

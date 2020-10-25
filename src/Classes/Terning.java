@@ -1,3 +1,5 @@
+package Classes;
+
 import java.util.Random;
 
 public class Terning {
@@ -12,7 +14,6 @@ public class Terning {
 
     public int kast()
     {
-        int sum = generateRandomDiceValue() + generateRandomDiceValue();
-        return sum;
+        return generateRandomDiceValue() + generateRandomDiceValue();
     }
 }
