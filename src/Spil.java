@@ -27,4 +27,28 @@ public class Spil {
 
         startGame();
     }
+
+    private void startGame() {
+        int vinderPengeBeholdningPoints = 3000;
+        boolean gameIsRunning = true;
+        while (gameIsRunning) {
+
+            String spillerNavn = currentPlayer.getNavn();
+            System.out.println(spillerNavn + "'s turn. Throw dice (Enter)");
+            String waitForDiceThrow = scanner.nextLine();
+
+            int feltKey = terning.kast();
+
+            FeltListKeyValue keyValue = feltList.getVærdi(feltKey);
+            int value = keyValue.getValue();
+            System.out.println("Key: " + feltKey + ", Værdi: " + value);
+
+            Konto konto = currentPlayer.getKonto();
+            boolean gennemført = konto.updatePengeBeholdning(value);
+            if (!gennemført) {
+                System.out.println("Konto'en blev ikke opdateret");
+            }
+
+            System.out.println(spillerNavn + " pengebehldning: " + konto.getPengeBeholdning());
+
 }
