@@ -6,19 +6,42 @@ public class Print {
 
     private String[] Options;
     private String Turn;
+    private String Language;
 
-    public void Print(String language) throws FileNotFoundException {
-        if (language=="English") {
+    public Print() {
+    }
+
+    public void AskForLanguage(Scanner scanner) throws FileNotFoundException {
+        System.out.println("Please choose a language \n");
+        System.out.println("1. English \n");
+        String s;
+        System.out.println("2. Danish \n");
+        int choice = scanner.nextInt();
+        if(choice==1) {
+            Language = "English";
+        }
+        else {
+            Language = "Danish";
+        }
+
+        setPrints();
+    }
+
+    public void setPrints() throws FileNotFoundException {
+        if (Language=="English") {
             String filepath = ".\\PrintStatements\\EnglishOptions.txt";
             String[] Options = loadOptions(filepath);
             filepath = ".\\PrintStatements\\EnglishTurn.txt";
             String Turn = loadTurn(filepath);
         }
-        else if (language=="Danish") {
+        else if (Language=="Danish") {
 
         }
 
 
+    }
+    public String getLanguage() {
+        return Language;
     }
 
     public void PrintField(int FieldNr) {

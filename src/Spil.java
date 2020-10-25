@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -12,6 +13,12 @@ public class Spil {
     private Random random = new Random();
 
     public void start() {
+        Print print = new Print();
+        try {
+            print.AskForLanguage(scanner);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
         System.out.println("Enter player1 name");
         String player1Name = scanner.nextLine();
         player1 = new Spiller(player1Name);
