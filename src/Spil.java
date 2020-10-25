@@ -19,12 +19,10 @@ public class Spil {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        System.out.println("Enter player1 name");
-        String player1Name = scanner.nextLine();
-        player1 = new Spiller(player1Name);
 
-        System.out.println("Enter player2 name");
-        String player2Name = scanner.nextLine();
+        String player1Name = print.promptNames(0);
+        player1 = new Spiller(player1Name);
+        String player2Name = print.promptNames(1);
         player2 = new Spiller(player2Name);
 
         System.out.println();

@@ -7,6 +7,7 @@ public class Print {
     private String[] Options;
     private String Turn;
     private String Language;
+    private String[] PlayerNamePrompt;
 
     public Print() {
     }
@@ -30,15 +31,25 @@ public class Print {
     public void setPrints() throws FileNotFoundException {
         if (Language=="English") {
             String filepath = ".\\PrintStatements\\EnglishOptions.txt";
-            String[] Options = loadOptions(filepath);
+            Options = loadMultiLine(filepath,11);
             filepath = ".\\PrintStatements\\EnglishTurn.txt";
-            String Turn = loadTurn(filepath);
+            Turn = loadSingleLine(filepath);
+            filepath = ".\\PrintStatements\\EnglishPlayerNamePrompt.txt";
+            PlayerNamePrompt = loadMultiLine(filepath,2);
         }
         else if (Language=="Danish") {
 
         }
 
 
+    }
+
+    public String promptNames(int i) {
+        Scanner s = new Scanner(System.in);
+        System.out.println(PlayerNamePrompt[i]);
+        System.out.println();
+        String playerName = s.nextLine();
+        return playerName;
     }
     public String getLanguage() {
         return Language;
@@ -52,20 +63,20 @@ public class Print {
         return Turn;
     }
 
-    static String[] loadOptions(String pathToFile) throws FileNotFoundException {
+    static String[] loadMultiLine(String pathToFile, int length) throws FileNotFoundException {
         Scanner s = new Scanner(new File(pathToFile));
-        String[] Options = new String[11];
-        for(int i = 0;i<Options.length;i++){
-            Options[i] = s.nextLine();
+        String[] st = new String[length];
+        for(int i = 0;i<st.length;i++){
+            st[i] = s.nextLine();
         }
         s.close();
-        return Options;
+        return st;
     }
 
-    static String loadTurn(String pathToFile) throws FileNotFoundException {
+    static String loadSingleLine(String pathToFile) throws FileNotFoundException {
         Scanner s = new Scanner(new File(pathToFile));
-        String turn = new String(s.nextLine());
+        String st = new String(s.nextLine());
         s.close();
-        return turn;
+        return st;
     }
 }

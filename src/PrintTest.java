@@ -8,7 +8,7 @@ class PrintTest {
     Print myPrint = new Print();
     @Test
     void loadOptions() throws FileNotFoundException {
-        String[] Options = myPrint.loadOptions(".\\PrintStatements\\EnglishOptions.txt");
+        String[] Options = myPrint.loadMultiLine(".\\PrintStatements\\EnglishOptions.txt",11);
         int n = Options.length;
         assertEquals(n,11);
     }
