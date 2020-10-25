@@ -12,6 +12,7 @@ public class Print {
     private String ExtraTurn;
     private String[] endGame;
     private String AccountError;
+    private String Path;
     public Print() {
     }
 
@@ -33,25 +34,25 @@ public class Print {
 
     public void setPrints() throws FileNotFoundException {
         if (Language.equals("English")) {
-            String filepath = ".\\PrintStatements\\EnglishOptions.txt";
-            Options = loadMultiLine(filepath,11);
-            filepath = ".\\PrintStatements\\EnglishTurn.txt";
-            Turn = loadSingleLine(filepath);
-            filepath = ".\\PrintStatements\\EnglishPlayerNamePrompt.txt";
-            PlayerNamePrompt = loadMultiLine(filepath,2);
-            filepath = ".\\PrintStatements\\EnglishFVPWord.txt";
-            FVPWord = loadMultiLine(filepath,3);
-            filepath = ".\\PrintStatements\\EnglishExtraTurn.txt";
-            ExtraTurn = loadSingleLine(filepath);
-            filepath = ".\\PrintStatements\\EnglishEndGame.txt";
-            endGame = loadMultiLine(filepath,2);
-            filepath = ".\\PrintStatements\\EnglishAccountError.txt";
-            AccountError = loadSingleLine(filepath);
+            Path = ".\\PrintStatements\\English\\";
         }
         else if (Language.equals("Danish")) {
-
+            String Path = ".\\PrintStatements\\Danish\\";
         }
-
+        String filepath = Path + "Options.txt";
+        Options = loadMultiLine(filepath,11);
+        filepath = Path + "Turn.txt";
+        Turn = loadSingleLine(filepath);
+        filepath = Path + "PlayerNamePrompt.txt";
+        PlayerNamePrompt = loadMultiLine(filepath,2);
+        filepath = Path + "FVPWord.txt";
+        FVPWord = loadMultiLine(filepath,3);
+        filepath = Path + "ExtraTurn.txt";
+        ExtraTurn = loadSingleLine(filepath);
+        filepath = Path + "EndGame.txt";
+        endGame = loadMultiLine(filepath,2);
+        filepath = Path + "AccountError.txt";
+        AccountError = loadSingleLine(filepath);
 
     }
 
