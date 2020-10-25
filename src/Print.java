@@ -8,19 +8,20 @@ public class Print {
     private String Turn;
     private String Language;
     private String[] PlayerNamePrompt;
-    private String ExtraTurn;
     private String[] endGame;
     private String AccountError;
     private String Path;
     private String Account;
+    private String AskForEnter;
     public Print() {
     }
 
-    public void AskForLanguage(Scanner scanner) throws FileNotFoundException {
+    public void AskForLanguage() throws FileNotFoundException {
+        Scanner s = new Scanner(System.in);
         System.out.println("Please choose a language \n");
         System.out.println("1. English \n");
         System.out.println("2. Danish \n");
-        int choice = scanner.nextInt();
+        int choice = s.nextInt();
         if(choice==1) {
             Language = "English";
         }
@@ -44,16 +45,14 @@ public class Print {
         Turn = loadSingleLine(filepath);
         filepath = Path + "PlayerNamePrompt.txt";
         PlayerNamePrompt = loadMultiLine(filepath,2);
-        filepath = Path + "ExtraTurn.txt";
-        ExtraTurn = loadSingleLine(filepath);
         filepath = Path + "EndGame.txt";
         endGame = loadMultiLine(filepath,2);
         filepath = Path + "AccountError.txt";
         AccountError = loadSingleLine(filepath);
         filepath = Path + "Account.txt";
         Account = loadSingleLine(filepath);
-
-
+        filepath = Path + "AskForEnter.txt";
+        AskForEnter = loadSingleLine(filepath);
     }
 
     public String promptNames(int i) {
@@ -73,10 +72,10 @@ public class Print {
     public String getAccount() {
         return Account;
     }
-
-    public void ExtraTurn() {
-        System.out.println(ExtraTurn);
+    public String AskForEnter() {
+        return AskForEnter;
     }
+
     public void AccountError() {
         System.out.println(AccountError);
     }

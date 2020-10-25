@@ -15,7 +15,7 @@ public class Spil {
     public void start() {
         Print print = new Print();
         try {
-            print.AskForLanguage(scanner);
+            print.AskForLanguage();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -41,37 +41,37 @@ public class Spil {
             String PlayerName = currentPlayer.getNavn();
             System.out.println(PlayerName + print.printTurn());
             String waitForDiceThrow = scanner.nextLine();
+            if (waitForDiceThrow.equals("")) {
+                int feltKey = terning.kast();
 
-            int feltKey = terning.kast();
+                FeltListKeyValue keyValue = feltList.getVærdi(feltKey);
+                int value = keyValue.getValue();
+                print.PrintField(feltKey);
 
-            FeltListKeyValue keyValue = feltList.getVærdi(feltKey);
-            int value = keyValue.getValue();
-            print.PrintField(feltKey);
-
-            Konto konto = currentPlayer.getKonto();
-            boolean Success = konto.updatePengeBeholdning(value);
-            if (!Success) {
-                print.AccountError();
-            }
-
-            System.out.println(PlayerName + print.getAccount() + konto.getPengeBeholdning());
-
-            if (konto.getPengeBeholdning() >= winningPoints) {
-                print.endGame(PlayerName);
-                gameIsRunning = false;
-                return; //exit the method
-            }
-            if (keyValue.giverEkstraTur()) {
-                print.ExtraTurn();
-            }
-            else{
-                if (currentPlayer == player1) {
-                    currentPlayer = player2;
-                } else {
-                    currentPlayer = player1;
+                Konto konto = currentPlayer.getKonto();
+                boolean Success = konto.updatePengeBeholdning(value);
+                if (!Success) {
+                    print.AccountError();
                 }
+
+                System.out.println(PlayerName + print.getAccount() + konto.getPengeBeholdning());
+
+                if (konto.getPengeBeholdning() >= winningPoints) {
+                    print.endGame(PlayerName);
+                    gameIsRunning = false;
+                    return; //exit the method
+                } else {
+                    if (currentPlayer == player1) {
+                        currentPlayer = player2;
+                    } else {
+                        currentPlayer = player1;
+                    }
+                }
+                print.newRound();
             }
-            print.newRound();
+            else {
+                System.out.println(print.AskForEnter());
+            }
         }
     }
 }
