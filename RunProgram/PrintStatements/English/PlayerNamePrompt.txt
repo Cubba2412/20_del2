@@ -1,0 +1,2 @@
+Enter player 1's name
+Enter player 2's name
